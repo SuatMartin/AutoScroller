@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://6ja525hjluk0"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_e8j6n"]
+[ext_resource type="PackedScene" uid="uid://c8rv5uc0b2e7c" path="res://Scroller.tscn" id="1_p8vw1"]
+[ext_resource type="PackedScene" uid="uid://coasanfvbuh8s" path="res://player.tscn" id="2_srd5r"]
+[ext_resource type="PackedScene" uid="uid://covwpssluabmg" path="res://hud.tscn" id="4_y4l78"]
+[ext_resource type="PackedScene" uid="uid://28qwhmoe1iho" path="res://game_over.tscn" id="5_7bsfe"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_e8j6n")
+
+[node name="Node2D" parent="." instance=ExtResource("1_p8vw1")]
+
+[node name="Player" parent="." instance=ExtResource("2_srd5r")]
+position = Vector2(270, 334)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource("4_y4l78")]
+
+[node name="GameOver" parent="." instance=ExtResource("5_7bsfe")]
+process_mode = 2

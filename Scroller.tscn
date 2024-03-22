@@ -1,23 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8rv5uc0b2e7c"]
+[gd_scene load_steps=5 format=3 uid="uid://c8rv5uc0b2e7c"]
 
 [ext_resource type="Texture2D" uid="uid://clkmwgve3ivnx" path="res://Art/Glacial-mountains-parallax-background_vnitti/Layers/sky.png" id="1_lqxmk"]
 [ext_resource type="Texture2D" uid="uid://dx64dlcnlyuuq" path="res://Art/Glacial-mountains-parallax-background_vnitti/Layers/glacial_mountains.png" id="2_uprjy"]
 [ext_resource type="Texture2D" uid="uid://cjb6dpe6t5pk3" path="res://Art/Glacial-mountains-parallax-background_vnitti/Layers/clouds_mg_2.png" id="3_whrl6"]
 [ext_resource type="Texture2D" uid="uid://op4v8a845kjy" path="res://Art/Glacial-mountains-parallax-background_vnitti/Layers/cloud_lonely.png" id="4_kaa58"]
-[ext_resource type="PackedScene" uid="uid://coasanfvbuh8s" path="res://player.tscn" id="5_0iba4"]
-[ext_resource type="Script" path="res://ScrollingCamera.gd" id="6_68tjo"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_50qn3"]
-size = Vector2(1149, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4p1c7"]
-size = Vector2(23, 659.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ruqmx"]
-size = Vector2(1162, 25.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6sjay"]
-size = Vector2(34, 689)
 
 [node name="Node2D" type="Node2D"]
 
@@ -36,6 +22,7 @@ centered = false
 
 [node name="Mountain" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
+motion_scale = Vector2(0.6, 0.6)
 motion_mirroring = Vector2(2200, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Mountain"]
@@ -57,6 +44,7 @@ centered = false
 [node name="Cloud" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
 scale = Vector2(0.997759, 1)
+motion_scale = Vector2(0.2, 0.2)
 motion_mirroring = Vector2(2200, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Cloud"]
@@ -64,28 +52,3 @@ position = Vector2(-1, 2)
 scale = Vector2(5.775, 3.225)
 texture = ExtResource("4_kaa58")
 centered = false
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(574, 326)
-script = ExtResource("6_68tjo")
-
-[node name="Player" parent="Camera2D" instance=ExtResource("5_0iba4")]
-position = Vector2(-32, 25)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Camera2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/StaticBody2D"]
-position = Vector2(0, -321)
-shape = SubResource("RectangleShape2D_50qn3")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Camera2D/StaticBody2D"]
-position = Vector2(571.5, -1.25)
-shape = SubResource("RectangleShape2D_4p1c7")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Camera2D/StaticBody2D"]
-position = Vector2(0, 317.25)
-shape = SubResource("RectangleShape2D_ruqmx")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Camera2D/StaticBody2D"]
-position = Vector2(-572, 13)
-shape = SubResource("RectangleShape2D_6sjay")
